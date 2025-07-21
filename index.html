@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Belajar Fiqih</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: #222;
+      transition: all 0.3s ease;
+    }
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: white;
+    }
+    header, footer {
+      padding: 1rem;
+      background-color: #3498db;
+      color: white;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #f0f0f0;
+    }
+    nav button {
+      padding: 10px;
+      cursor: pointer;
+    }
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .hidden {
+      display: none;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .correct {
+      color: green;
+    }
+    .wrong {
+      color: red;
+    }
+    select, input[type="range"] {
+      margin: 5px;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Belajar Fiqih</h1>
+    <p>Buatan Deni Pratama Wijaya Albunisari</p>
+  </header>
+
+  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('belajar')">Mulai Belajar</button>
+    <button onclick="showSection('pengaturan')">Pengaturan</button>
+  </nav>
+
+  <div class="container">
+    <div id="home">
+      <h2>Selamat datang di aplikasi Belajar Fiqih</h2>
+      <p>Pilih menu di atas untuk mulai belajar atau mengatur tampilan aplikasi.</p>
+    </div>
+
+    <div id="belajar" class="hidden">
+      <h2>Mulai Belajar</h2>
+      <button onclick="showSection('materi')">📘 Pelajari</button>
+      <button onclick="showSection('latihan')">📝 Mulai Latihan Soal</button>
+    </div>
+
+    <div id="materi" class="hidden">
+      <h3>Materi Fiqih</h3>
+      <pre>
+<b>متن سفينة النجاة</b>
+بسم الله الرحمن الرحيم
+
+Segala puji bagi Allah dan shalawat serta salam kepada Nabi Muhammad SAW.
+
+<b>Rukun Islam:</b>
+1. Bersaksi bahwa tiada Tuhan selain Allah dan Nabi Muhammad utusan-Nya.
+2. Mendirikan sholat.
+3. Menunaikan zakat.
+4. Puasa Ramadhan.
+5. Haji ke Baitullah bagi yang mampu.
+
+<b>Rukun Iman:</b>
+1. Iman kepada Allah.
+2. Iman kepada malaikat.
+3. Iman kepada kitab-kitab-Nya.
+4. Iman kepada rasul-rasul-Nya.
+5. Iman kepada hari akhir.
+6. Iman kepada takdir baik dan buruk dari Allah.
+
+<b>Makna La Ilaha Illallah:</b>
+Tidak ada Tuhan yang berhak disembah selain Allah.
+
+<b>Tanda-Tanda Baligh:</b>
+1. Usia 15 tahun.
+2. Mimpi basah.
+3. Haid (untuk perempuan) mulai usia 9 tahun.
+
+<b>Syarat Bersuci dengan Batu:</b>
+1. Tiga batu.
+2. Najis tidak kering atau berpindah.
+3. Tidak terkena air.
+4. Batu suci.
+
+<b>Fardhu Wudhu:</b>
+1. Niat.
+2. Membasuh muka.
+3. Membasuh tangan hingga siku.
+4. Menyapu kepala.
+5. Membasuh kaki.
+6. Tertib.
+
+<b>Yang Membatalkan Wudhu:</b>
+1. Keluar sesuatu dari kemaluan.
+2. Hilang akal.
+3. Sentuhan laki-laki dan perempuan non-mahram.
+4. Menyentuh kemaluan.
+
+<b>Larangan bagi yang berhadats kecil:</b>
+1. Shalat.
+2. Tawaf.
+3. Menyentuh mushaf.
+
+<b>Larangan bagi yang berhadats besar:</b>
+1. Sama seperti hadats kecil ditambah:
+2. Tidak boleh membaca Al-Qur'an dan i’tikaf.
+
+<b>Larangan bagi wanita haid:</b>
+1. Tidak boleh sholat, puasa, menyentuh dan membaca Al-Qur’an.
+2. Tidak boleh i’tikaf dan jima’.
+      </pre>
+    </div>
+
+    <div id="latihan" class="hidden">
+      <h3>Latihan Soal</h3>
+      <form id="quizForm">
+        <div class="question">
+          <label>1. Berapa jumlah Rukun Islam?</label><br>
+          <input type="radio" name="q1" value="a"> 3<br>
+          <input type="radio" name="q1" value="b"> 5<br>
+          <input type="radio" name="q1" value="c"> 6
+        </div>
+        <div class="question">
+          <label>2. Apa arti La Ilaha Illallah?</label><br>
+          <input type="radio" name="q2" value="a"> Tidak ada tuhan selain Allah<br>
+          <input type="radio" name="q2" value="b"> Allah itu satu<br>
+          <input type="radio" name="q2" value="c"> Nabi Muhammad adalah Rasul
+        </div>
+        <div class="question">
+          <label>3. Apa syarat sah bersuci dengan batu?</label><br>
+          <input type="radio" name="q3" value="a"> Batu harus besar<br>
+          <input type="radio" name="q3" value="b"> Menggunakan tiga batu suci<br>
+          <input type="radio" name="q3" value="c"> Tidak perlu batu
+        </div>
+        <div class="question">
+          <label>4. Apa fardhu pertama dari wudhu?</label><br>
+          <input type="radio" name="q4" value="a"> Membasuh muka<br>
+          <input type="radio" name="q4" value="b"> Niat<br>
+          <input type="radio" name="q4" value="c"> Membasuh tangan
+        </div>
+        <div class="question">
+          <label>5. Apa saja yang membatalkan wudhu?</label><br>
+          <input type="radio" name="q5" value="a"> Tidur sambil duduk<br>
+          <input type="radio" name="q5" value="b"> Sentuhan kulit tanpa penghalang<br>
+          <input type="radio" name="q5" value="c"> Semua benar
+        </div>
+        <button type="button" onclick="checkAnswers()">Selesai</button>
+      </form>
+      <div id="result"></div>
+    </div>
+
+    <div id="pengaturan" class="hidden">
+      <h3>Pengaturan Tampilan</h3>
+      <label>Mode Tema:</label>
+      <select onchange="changeTheme(this.value)">
+        <option value="light">Terang</option>
+        <option value="dark">Gelap</option>
+      </select><br>
+
+      <label>Font:</label>
+      <select onchange="document.body.style.fontFamily=this.value">
+        <option value="Arial">Arial</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Courier New">Courier New</option>
+      </select><br>
+
+      <label>Bahasa:</label>
+      <select>
+        <option>Bahasa Indonesia</option>
+        <option>English</option>
+        <option>عربى</option>
+      </select>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Belajar Fiqih - Deni Pratama Wijaya Albunisari
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.container > div').forEach(div => {
+        if (div.id === id) div.classList.remove('hidden');
+        else div.classList.add('hidden');
+      });
+    }
+
+    function changeTheme(value) {
+      if (value === 'dark') document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+    }
+
+    function checkAnswers() {
+      let score = 0;
+      let result = '';
+      const form = document.getElementById('quizForm');
+      const answers = {
+        q1: 'b',
+        q2: 'a',
+        q3: 'b',
+        q4: 'b',
+        q5: 'c'
+      };
+
+      for (let key in answers) {
+        const selected = form[key].value;
+        if (selected === answers[key]) {
+          result += `<p class="correct">Soal ${key.slice(1)}: ✅ Benar</p>`;
+          score++;
+        } else {
+          result += `<p class="wrong">Soal ${key.slice(1)}: ❌ Salah</p>`;
+        }
+      }
+
+      result += `<h4>Nilai kamu: ${score * 20}/100</h4>`;
+      document.getElementById('result').innerHTML = result;
+    }
+  </script>
+</body>
+</html>
