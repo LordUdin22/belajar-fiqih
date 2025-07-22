@@ -6,54 +6,68 @@
   <title>Belajar Fiqih</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       background-color: white;
       color: #222;
       transition: all 0.3s ease;
     }
+
     .dark-mode {
       background-color: #1e1e1e;
       color: white;
     }
+
     header, footer {
       padding: 1rem;
-      background-color: #3498db;
+      background-color: #2c3e50;
       color: white;
       text-align: center;
     }
+
     nav {
       display: flex;
       justify-content: center;
       gap: 1rem;
       padding: 1rem;
-      background-color: #f0f0f0;
+      background-color: #ecf0f1;
     }
+
     nav button {
-      padding: 10px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      border: none;
+      border-radius: 6px;
+      color: white;
       cursor: pointer;
+      transition: background 0.3s;
     }
+
+    nav button:hover {
+      background-color: #2980b9;
+    }
+
     .container {
       padding: 20px;
       max-width: 900px;
       margin: auto;
     }
+
     .hidden {
       display: none;
     }
-    .question {
-      margin-bottom: 20px;
+
+    select {
+      padding: 5px;
+      margin: 10px 0;
     }
-    .correct {
-      color: green;
+
+    .language-note {
+      font-size: 0.9em;
+      color: gray;
     }
-    .wrong {
-      color: red;
-    }
-    select, input[type="range"] {
-      margin: 5px;
-    }
+
     pre {
       white-space: pre-wrap;
     }
@@ -61,153 +75,89 @@
 </head>
 <body>
   <header>
-    <h1>Belajar Fiqih</h1>
-    <p>Buatan Deni Pratama Wijaya Albunisari</p>
+    <h1 id="appTitle">Belajar Fiqih</h1>
+    <p>Dibuat oleh Deni Pratama Wijaya Albunisari</p>
   </header>
 
   <nav>
-    <button onclick="showSection('home')">Home</button>
-    <button onclick="showSection('belajar')">Mulai Belajar</button>
-    <button onclick="showSection('pengaturan')">Pengaturan</button>
+    <button onclick="showSection('home')">🏠 Home</button>
+    <button onclick="showSection('belajar')">📘 Belajar</button>
+    <button onclick="showSection('pengaturan')">⚙️ Pengaturan</button>
   </nav>
 
   <div class="container">
     <div id="home">
-      <h2>Selamat datang di aplikasi Belajar Fiqih</h2>
-      <p>Pilih menu di atas untuk mulai belajar atau mengatur tampilan aplikasi.</p>
+      <h2 id="welcomeTitle">Selamat datang</h2>
+      <p id="welcomeDesc">Pilih menu di atas untuk mulai belajar atau mengatur tampilan aplikasi.</p>
     </div>
 
     <div id="belajar" class="hidden">
-      <h2>Mulai Belajar</h2>
-      <button onclick="showSection('materi')">📘 Pelajari</button>
-      <button onclick="showSection('latihan')">📝 Mulai Latihan Soal</button>
+      <h2 id="belajarTitle">Mulai Belajar</h2>
+      <button onclick="showSection('materi')">📖 Pelajari Materi</button>
+      <button onclick="showSection('latihan')">📝 Latihan Soal</button>
     </div>
 
     <div id="materi" class="hidden">
-      <h3>Materi Fiqih</h3>
-      <pre>
-<b>متن سفينة النجاة</b>
-بسم الله الرحمن الرحيم
-
-Segala puji bagi Allah dan shalawat serta salam kepada Nabi Muhammad SAW.
-
-<b>Rukun Islam:</b>
-1. Bersaksi bahwa tiada Tuhan selain Allah dan Nabi Muhammad utusan-Nya.
-2. Mendirikan sholat.
-3. Menunaikan zakat.
-4. Puasa Ramadhan.
-5. Haji ke Baitullah bagi yang mampu.
-
-<b>Rukun Iman:</b>
-1. Iman kepada Allah.
-2. Iman kepada malaikat.
-3. Iman kepada kitab-kitab-Nya.
-4. Iman kepada rasul-rasul-Nya.
-5. Iman kepada hari akhir.
-6. Iman kepada takdir baik dan buruk dari Allah.
-
-<b>Makna La Ilaha Illallah:</b>
-Tidak ada Tuhan yang berhak disembah selain Allah.
-
-<b>Tanda-Tanda Baligh:</b>
-1. Usia 15 tahun.
-2. Mimpi basah.
-3. Haid (untuk perempuan) mulai usia 9 tahun.
-
-<b>Syarat Bersuci dengan Batu:</b>
-1. Tiga batu.
-2. Najis tidak kering atau berpindah.
-3. Tidak terkena air.
-4. Batu suci.
-
-<b>Fardhu Wudhu:</b>
-1. Niat.
-2. Membasuh muka.
-3. Membasuh tangan hingga siku.
-4. Menyapu kepala.
-5. Membasuh kaki.
-6. Tertib.
-
-<b>Yang Membatalkan Wudhu:</b>
-1. Keluar sesuatu dari kemaluan.
-2. Hilang akal.
-3. Sentuhan laki-laki dan perempuan non-mahram.
-4. Menyentuh kemaluan.
-
-<b>Larangan bagi yang berhadats kecil:</b>
-1. Shalat.
-2. Tawaf.
-3. Menyentuh mushaf.
-
-<b>Larangan bagi yang berhadats besar:</b>
-1. Sama seperti hadats kecil ditambah:
-2. Tidak boleh membaca Al-Qur'an dan i’tikaf.
-
-<b>Larangan bagi wanita haid:</b>
-1. Tidak boleh sholat, puasa, menyentuh dan membaca Al-Qur’an.
-2. Tidak boleh i’tikaf dan jima’.
+      <h3 id="materiTitle">Materi Fiqih</h3>
+      <pre id="materiContent">
+        <!-- Konten akan diisi via JavaScript berdasarkan bahasa -->
       </pre>
     </div>
 
     <div id="latihan" class="hidden">
-      <h3>Latihan Soal</h3>
+      <h3 id="quizTitle">Latihan Soal</h3>
       <form id="quizForm">
-        <div class="question">
-          <label>1. Berapa jumlah Rukun Islam?</label><br>
-          <input type="radio" name="q1" value="a"> 3<br>
-          <input type="radio" name="q1" value="b"> 5<br>
-          <input type="radio" name="q1" value="c"> 6
-        </div>
-        <div class="question">
-          <label>2. Apa arti La Ilaha Illallah?</label><br>
-          <input type="radio" name="q2" value="a"> Tidak ada tuhan selain Allah<br>
-          <input type="radio" name="q2" value="b"> Allah itu satu<br>
-          <input type="radio" name="q2" value="c"> Nabi Muhammad adalah Rasul
-        </div>
-        <div class="question">
-          <label>3. Apa syarat sah bersuci dengan batu?</label><br>
-          <input type="radio" name="q3" value="a"> Batu harus besar<br>
-          <input type="radio" name="q3" value="b"> Menggunakan tiga batu suci<br>
-          <input type="radio" name="q3" value="c"> Tidak perlu batu
-        </div>
-        <div class="question">
-          <label>4. Apa fardhu pertama dari wudhu?</label><br>
-          <input type="radio" name="q4" value="a"> Membasuh muka<br>
-          <input type="radio" name="q4" value="b"> Niat<br>
-          <input type="radio" name="q4" value="c"> Membasuh tangan
-        </div>
-        <div class="question">
-          <label>5. Apa saja yang membatalkan wudhu?</label><br>
-          <input type="radio" name="q5" value="a"> Tidur sambil duduk<br>
-          <input type="radio" name="q5" value="b"> Sentuhan kulit tanpa penghalang<br>
-          <input type="radio" name="q5" value="c"> Semua benar
-        </div>
-        <button type="button" onclick="checkAnswers()">Selesai</button>
-      </form>
-      <div id="result"></div>
+  <div class="question">
+    <label id="q1"></label><br>
+    <input type="radio" name="q1" value="a" id="q1a"> <label for="q1a" id="q1aText"></label><br>
+    <input type="radio" name="q1" value="b" id="q1b"> <label for="q1b" id="q1bText"></label><br>
+    <input type="radio" name="q1" value="c" id="q1c"> <label for="q1c" id="q1cText"></label>
+  </div>
+  <div class="question">
+    <label id="q2"></label><br>
+    <input type="radio" name="q2" value="a" id="q2a"> <label for="q2a" id="q2aText"></label><br>
+    <input type="radio" name="q2" value="b" id="q2b"> <label for="q2b" id="q2bText"></label><br>
+    <input type="radio" name="q2" value="c" id="q2c"> <label for="q2c" id="q2cText"></label>
+  </div>
+  <div class="question">
+    <label id="q3"></label><br>
+    <input type="radio" name="q3" value="a" id="q3a"> <label for="q3a" id="q3aText"></label><br>
+    <input type="radio" name="q3" value="b" id="q3b"> <label for="q3b" id="q3bText"></label><br>
+    <input type="radio" name="q3" value="c" id="q3c"> <label for="q3c" id="q3cText"></label>
+  </div>
+  <div class="question">
+    <label id="q4"></label><br>
+    <input type="radio" name="q4" value="a" id="q4a"> <label for="q4a" id="q4aText"></label><br>
+    <input type="radio" name="q4" value="b" id="q4b"> <label for="q4b" id="q4bText"></label><br>
+    <input type="radio" name="q4" value="c" id="q4c"> <label for="q4c" id="q4cText"></label>
+  </div>
+  <div class="question">
+    <label id="q5"></label><br>
+    <input type="radio" name="q5" value="a" id="q5a"> <label for="q5a" id="q5aText"></label><br>
+    <input type="radio" name="q5" value="b" id="q5b"> <label for="q5b" id="q5bText"></label><br>
+    <input type="radio" name="q5" value="c" id="q5c"> <label for="q5c" id="q5cText"></label>
+  </div>
+  <br>
+  <button type="button" onclick="checkAnswers()">Selesai</button>
+</form>
+<div id="result"></div>
     </div>
 
     <div id="pengaturan" class="hidden">
-      <h3>Pengaturan Tampilan</h3>
-      <label>Mode Tema:</label>
+      <h3>Pengaturan</h3>
+      <label>Mode Tema:</label><br>
       <select onchange="changeTheme(this.value)">
         <option value="light">Terang</option>
         <option value="dark">Gelap</option>
-      </select><br>
+      </select><br><br>
 
-      <label>Font:</label>
-      <select onchange="document.body.style.fontFamily=this.value">
-        <option value="Arial">Arial</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Courier New">Courier New</option>
-      </select><br>
-
-      <label>Bahasa:</label>
-      <select>
-        <option>Bahasa Indonesia</option>
-        <option>English</option>
-        <option>عربى</option>
+      <label>Bahasa:</label><br>
+      <select onchange="changeLanguage(this.value)">
+        <option value="id">Bahasa Indonesia</option>
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
       </select>
+      <p class="language-note">Beberapa materi akan berubah sesuai bahasa yang dipilih.</p>
     </div>
   </div>
 
@@ -216,43 +166,179 @@ Tidak ada Tuhan yang berhak disembah selain Allah.
   </footer>
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.container > div').forEach(div => {
-        if (div.id === id) div.classList.remove('hidden');
-        else div.classList.add('hidden');
-      });
+  // Data materi dan soal 3 bahasa
+  const texts = {
+    id: {
+      appTitle: "Belajar Fiqih",
+      welcomeTitle: "Selamat datang",
+      welcomeDesc: "Pilih menu di atas untuk mulai belajar atau mengatur tampilan aplikasi.",
+      belajarTitle: "Mulai Belajar",
+      materiTitle: "Materi Fiqih",
+      materiContent: `
+<b>Rukun Islam:</b>
+1. Syahadat
+2. Shalat
+3. Zakat
+4. Puasa
+5. Haji
+
+<b>Rukun Iman:</b>
+1. Iman kepada Allah
+2. Malaikat
+3. Kitab
+4. Rasul
+5. Hari akhir
+6. Qada dan Qadar
+      `
+    },
+    en: {
+      appTitle: "Fiqh Learning App",
+      welcomeTitle: "Welcome",
+      welcomeDesc: "Choose a menu above to start learning or customize the app.",
+      belajarTitle: "Start Learning",
+      materiTitle: "Fiqh Materials",
+      materiContent: `
+<b>Pillars of Islam:</b>
+1. Shahada
+2. Prayer
+3. Alms (Zakat)
+4. Fasting (Ramadan)
+5. Pilgrimage (Hajj)
+
+<b>Pillars of Faith:</b>
+1. Belief in Allah
+2. Angels
+3. Books
+4. Prophets
+5. Judgment Day
+6. Destiny (Qadar)
+      `
+    },
+    ar: {
+      appTitle: "تعلم الفقه",
+      welcomeTitle: "أهلاً وسهلاً",
+      welcomeDesc: "اختر من القائمة أعلاه لبدء التعلم أو إعداد التطبيق.",
+      belajarTitle: "ابدأ التعلم",
+      materiTitle: "مواد الفقه",
+      materiContent: `
+<b>أركان الإسلام:</b>
+1. الشهادة
+2. الصلاة
+3. الزكاة
+4. الصيام
+5. الحج
+
+<b>أركان الإيمان:</b>
+1. الإيمان بالله
+2. الملائكة
+3. الكتب
+4. الرسل
+5. اليوم الآخر
+6. القضاء والقدر
+      `
     }
+  };
 
-    function changeTheme(value) {
-      if (value === 'dark') document.body.classList.add('dark-mode');
-      else document.body.classList.remove('dark-mode');
+  const quizTexts = {
+    id: {
+      q1: "1. Berapa jumlah Rukun Islam?",
+      q1a: "3", q1b: "5", q1c: "6",
+      q2: "2. Apa arti La Ilaha Illallah?",
+      q2a: "Tidak ada tuhan selain Allah", q2b: "Allah itu satu", q2c: "Nabi Muhammad adalah Rasul",
+      q3: "3. Apa syarat sah bersuci dengan batu?",
+      q3a: "Batu harus besar", q3b: "Menggunakan tiga batu suci", q3c: "Tidak perlu batu",
+      q4: "4. Apa fardhu pertama dari wudhu?",
+      q4a: "Membasuh muka", q4b: "Niat", q4c: "Membasuh tangan",
+      q5: "5. Apa saja yang membatalkan wudhu?",
+      q5a: "Tidur sambil duduk", q5b: "Sentuhan kulit tanpa penghalang", q5c: "Semua benar",
+      answers: { q1: "b", q2: "a", q3: "b", q4: "b", q5: "c" }
+    },
+    en: {
+      q1: "1. How many pillars of Islam are there?",
+      q1a: "3", q1b: "5", q1c: "6",
+      q2: "2. What does La Ilaha Illallah mean?",
+      q2a: "There is no god but Allah", q2b: "Allah is one", q2c: "Muhammad is a Prophet",
+      q3: "3. What is the condition for dry purification?",
+      q3a: "The stone must be big", q3b: "Use three pure stones", q3c: "No need for stone",
+      q4: "4. What is the first fardhu in wudhu?",
+      q4a: "Washing face", q4b: "Intention (niyyah)", q4c: "Washing hands",
+      q5: "5. What invalidates wudhu?",
+      q5a: "Sleeping while sitting", q5b: "Touching skin without barrier", q5c: "All of the above",
+      answers: { q1: "b", q2: "a", q3: "b", q4: "b", q5: "c" }
+    },
+    ar: {
+      q1: "١. كم عدد أركان الإسلام؟",
+      q1a: "٣", q1b: "٥", q1c: "٦",
+      q2: "٢. ما معنى لا إله إلا الله؟",
+      q2a: "لا معبود بحق إلا الله", q2b: "الله واحد", q2c: "محمد رسول",
+      q3: "٣. ما شرط الطهارة بالحجر؟",
+      q3a: "الحجر يجب أن يكون كبيرًا", q3b: "استخدام ثلاثة أحجار طاهرة", q3c: "لا حاجة لحجر",
+      q4: "٤. ما أول فرض من الوضوء؟",
+      q4a: "غسل الوجه", q4b: "النية", q4c: "غسل اليدين",
+      q5: "٥. ما الذي ينقض الوضوء؟",
+      q5a: "النوم أثناء الجلوس", q5b: "اللمس بدون حاجز", q5c: "الكل صحيح",
+      answers: { q1: "b", q2: "a", q3: "b", q4: "b", q5: "c" }
     }
+  };
 
-    function checkAnswers() {
-      let score = 0;
-      let result = '';
-      const form = document.getElementById('quizForm');
-      const answers = {
-        q1: 'b',
-        q2: 'a',
-        q3: 'b',
-        q4: 'b',
-        q5: 'c'
-      };
+  function showSection(id) {
+    document.querySelectorAll('.container > div').forEach(div => {
+      if (div.id === id) div.classList.remove('hidden');
+      else div.classList.add('hidden');
+    });
+  }
 
-      for (let key in answers) {
-        const selected = form[key].value;
-        if (selected === answers[key]) {
-          result += `<p class="correct">Soal ${key.slice(1)}: ✅ Benar</p>`;
-          score++;
-        } else {
-          result += `<p class="wrong">Soal ${key.slice(1)}: ❌ Salah</p>`;
-        }
+  function changeTheme(value) {
+    if (value === 'dark') document.body.classList.add('dark-mode');
+    else document.body.classList.remove('dark-mode');
+  }
+
+  let currentLang = 'id';
+
+  function changeLanguage(lang) {
+    currentLang = lang;
+    const t = texts[lang];
+    document.getElementById('appTitle').innerText = t.appTitle;
+    document.getElementById('welcomeTitle').innerText = t.welcomeTitle;
+    document.getElementById('welcomeDesc').innerText = t.welcomeDesc;
+    document.getElementById('belajarTitle').innerText = t.belajarTitle;
+    document.getElementById('materiTitle').innerText = t.materiTitle;
+    document.getElementById('materiContent').innerText = t.materiContent;
+
+    const q = quizTexts[lang];
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById(`q${i}`).innerText = q[`q${i}`];
+      document.getElementById(`q${i}aText`).innerText = q[`q${i}a`];
+      document.getElementById(`q${i}bText`).innerText = q[`q${i}b`];
+      document.getElementById(`q${i}cText`).innerText = q[`q${i}c`];
+    }
+  }
+
+  function checkAnswers() {
+    const q = quizTexts[currentLang];
+    const answers = q.answers;
+    let score = 0;
+    let result = '';
+
+    for (let i = 1; i <= 5; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) continue;
+      const jawaban = selected.value;
+      if (jawaban === answers[`q${i}`]) {
+        result += `<p class="correct">Soal ${i}: ✅ Benar</p>`;
+        score++;
+      } else {
+        result += `<p class="wrong">Soal ${i}: ❌ Salah</p>`;
       }
-
-      result += `<h4>Nilai kamu: ${score * 20}/100</h4>`;
-      document.getElementById('result').innerHTML = result;
     }
+
+    const nilai = (score / 5) * 100;
+    result += `<h4>Nilai kamu: ${nilai}/100</h4>`;
+    document.getElementById("result").innerHTML = result;
+  }
+
+  // Jalankan bahasa default saat halaman dibuka
+  changeLanguage('id');
   </script>
 </body>
 </html>
