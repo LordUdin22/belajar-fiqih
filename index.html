@@ -416,14 +416,27 @@ Larangan bagi perempuan yang sedang haidh ada sepuluh, yaitu:
 
   const nilai = (score / 5) * 100;
   result += `<h4>Nilai kamu: ${nilai}/100</h4>`;
-  result += `<p>Anda akan diarahkan kembali ke Home dalam 5 detik...</p>`;
-  document.getElementById("result").innerHTML = result;
 
-  // Setelah 5 detik, kembali ke home
-  setTimeout(() => {
-    showSection('home');
-    window.scrollTo(0, 0);
-  }, 5000);
+  if (score === 5) {
+    result += `<p>✅ Semua jawaban benar! Kembali ke Home dalam 5 detik...</p>`;
+    document.getElementById("result").innerHTML = result;
+
+    setTimeout(() => {
+      resetSoal(); // panggil reset soal
+      showSection('home'); // kembali ke home
+      window.scrollTo(0, 0);
+    }, 5000);
+  } else {
+    result += `<p>❌ Masih ada jawaban salah. Silakan periksa kembali.</p>`;
+    document.getElementById("result").innerHTML = result;
+  }
+}
+function resetSoal() {
+  for (let i = 1; i <= 5; i++) {
+    const options = document.getElementsByName(`q${i}`);
+    options.forEach(option => option.checked = false);
+  }
+  document.getElementById("result").innerHTML = '';
 }
 
 function bukaAplikasi() {
